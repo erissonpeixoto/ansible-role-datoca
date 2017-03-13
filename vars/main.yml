@@ -3,3 +3,7 @@ datoca:
   user: datoca
   group: datoca
   ruby_version: 2.4.0
+  database:
+    name: datoca
+    user: datoca
+    password: "pick your poison"
