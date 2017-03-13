@@ -1,0 +1,49 @@
+---
+- name: add nginx, nodejs and postgres repositories
+  become: yes
+  apt_repository: repo={{ item.repo }} state=present filename={{ item.name }}
+  with_items:
+    - { repo: 'deb https://nginx.org/packages/ubuntu/ xenial nginx', name: 'nginx' }
+    - { repo: 'deb-src https://nginx.org/packages/ubuntu/ xenial nginx', name: 'nginx' }
+    - { repo: 'deb https://deb.nodesource.com/node_4.x xenial main', name: 'nodesource' }
+    - { repo: 'deb-src https://deb.nodesource.com/node_4.x xenial main', name: 'nodesource' }
+    - { repo: 'deb https://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main', name: 'pgdg' }
+
+- name: add postgres and nodesource key
+  become: yes
+  apt_key: url={{ item }} state=present
+  with_items:
+    - https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+    - https://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc
+
+- name: add nginx key
+  become: yes
+  apt_key: keyserver="keyserver.ubuntu.com" id="ABF5BD827BD9BF62" state=present
+
+- name: install required packages
+  become: yes
+  apt: "pkg={{ item }} state=latest update_cache=true"
+  with_items:
+    # COMMON
+    - build-essential
+    - git-core
+    # RUBY
+    - libssl-dev
+    - libreadline-dev
+    - zlib1g-dev
+    # POSTGRES
+    - libpq-dev
+    - postgresql-common
+    - postgresql-9.5
+    - python-psycopg2
+    # NODEJS
+    - apt-transport-https
+    - lsb-release
+    - curl
+    - nodejs
+    # MEMCACHED
+    - memcached
+    # REDIS
+    - redis-server
+    # NGINX
+    - nginx
