@@ -1,0 +1,7 @@
+- name: create datoca group
+  become: yes
+  group: name="{{ datoca.group }}" state=present
+
+- name: create datoca user
+  become: yes
+  user: name="{{ datoca.user }}" group={{ datoca.group }}
