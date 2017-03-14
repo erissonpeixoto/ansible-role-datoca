@@ -33,6 +33,6 @@
   when: has_ruby|failed
 
 - name: install bundler
-  shell: $SHELL -lc "gem install bundler; rbenv rehash" creates=~/.rbenv/shims/bundler
+  shell: $SHELL -lc "gem install bundler; rbenv rehash" creates=~/.rbenv/versions/{{ datoca_ruby_version }}/bin/bundler
   become: yes
   become_user: "{{ datoca_user }}"
