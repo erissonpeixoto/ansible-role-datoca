@@ -2,14 +2,14 @@
 - name: add postgres user
   become: yes
   become_user: postgres
-  postgresql_user: name="{{ datoca.database.user }}" password="{{ datoca.database.password }}" role_attr_flags=CREATEDB,NOSUPERUSER
+  postgresql_user: name="{{ datoca_database_user }}" password="{{ datoca_database_password }}" role_attr_flags=CREATEDB,NOSUPERUSER
 
 - name: create application database
   become: yes
   become_user: postgres
-  postgresql_db: name="{{ datoca.database.name }}" encoding='UTF-8' owner="{{ datoca.database.user }}"
+  postgresql_db: name="{{ datoca_database_name }}" encoding='UTF-8' owner="{{ datoca_database_user }}"
 
 - name: add hstore extension
   become: yes
   become_user: postgres
-  postgresql_ext: name=hstore db="{{ datoca.database.name }}"
+  postgresql_ext: name=hstore db="{{ datoca_database_name }}"

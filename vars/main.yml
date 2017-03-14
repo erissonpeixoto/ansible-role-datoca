@@ -1,9 +1,14 @@
 ---
-datoca:
-  user: datoca
-  group: datoca
-  ruby_version: 2.4.0
-  database:
-    name: datoca
-    user: datoca
-    password: "pick your poison"
+datoca_user: datoca
+datoca_group: datoca
+datoca_ruby_version: 2.4.0
+datoca_path: "/home/{{ datoca_user }}/web"
+datoca_deploy_env: development
+# DATABASE
+datoca_database_name: datoca
+datoca_database_user: datoca
+datoca_database_password: "pick your poison"
+
+datoca_sec_key_base: "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+# VENDORS
+datoca_vendors_skylight_token: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"

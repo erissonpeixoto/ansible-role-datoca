@@ -2,37 +2,37 @@
 - name: install rbenv
   git: repo=https://github.com/rbenv/rbenv.git dest=~/.rbenv
   become: yes
-  become_user: "{{ datoca.user }}"
+  become_user: "{{ datoca_user }}"
 
 - name: install ruby-build
   git: repo=https://github.com/rbenv/ruby-build.git dest=~/.rbenv/plugins/ruby-build
   become: yes
-  become_user: "{{ datoca.user }}"
+  become_user: "{{ datoca_user }}"
 
 - name: add rbenv initialization
   template: src=rbenv.sh.j2 dest=/etc/profile.d/rbenv.sh owner=root group=root mode=0755
   become: yes
 
-- name: check if ruby {{ datoca.ruby_version }} is installed
-  shell: $SHELL -lc "ruby -v | grep {{ datoca.ruby_version }}"
+- name: check if ruby {{ datoca_ruby_version }} is installed
+  shell: $SHELL -lc "ruby -v | grep {{ datoca_ruby_version }}"
   become: yes
-  become_user: "{{ datoca.user }}"
+  become_user: "{{ datoca_user }}"
   register: has_ruby
   ignore_errors: yes
 
-- name: install ruby {{ datoca.ruby_version }}
-  shell: $SHELL -lc "rbenv install {{ datoca.ruby_version }}" creates=~/.rbenv/versions/{{ datoca.ruby_version }}
+- name: install ruby {{ datoca_ruby_version }}
+  shell: $SHELL -lc "rbenv install {{ datoca_ruby_version }}" creates=~/.rbenv/versions/{{ datoca_ruby_version }}
   become: yes
-  become_user: "{{ datoca.user }}"
+  become_user: "{{ datoca_user }}"
   when: has_ruby|failed
 
-- name: set global ruby to {{ datoca.ruby_version }}
-  shell: $SHELL -lc "rbenv global {{ datoca.ruby_version }}"
+- name: set global ruby to {{ datoca_ruby_version }}
+  shell: $SHELL -lc "rbenv global {{ datoca_ruby_version }}"
   become: yes
-  become_user: "{{ datoca.user }}"
+  become_user: "{{ datoca_user }}"
   when: has_ruby|failed
 
 - name: install bundler
   shell: $SHELL -lc "gem install bundler; rbenv rehash" creates=~/.rbenv/shims/bundler
   become: yes
-  become_user: "{{ datoca.user }}"
+  become_user: "{{ datoca_user }}"
