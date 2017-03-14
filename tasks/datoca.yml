@@ -1,0 +1,20 @@
+---
+- name: create app path
+  become: yes
+  become_user: "{{ datoca_user }}"
+  file: path="{{ datoca_path }}/shared/config" state=directory recurse=yes owner={{ datoca_user }} group={{ datoca_group }}
+
+- name: copy database.yml to shared/config
+  become: yes
+  become_user: "{{ datoca_user }}"
+  template: src=templates/database.yml.j2 dest="{{ datoca_path }}/shared/config/database.yml" owner={{ datoca_user }} group={{ datoca_group }}
+
+- name: copy app.yml to shared/config
+  become: yes
+  become_user: "{{ datoca_user }}"
+  template: src=templates/app.yml.j2 dest="{{ datoca_path }}/shared/config/app.yml" owner={{ datoca_user }} group={{ datoca_group }}
+
+- name: copy dot_profile to .profile
+  become: yes
+  become_user: "{{ datoca_user }}"
+  template: src=templates/dot_profile.j2 dest="~/.profile" owner={{ datoca_user }} group={{ datoca_group }}

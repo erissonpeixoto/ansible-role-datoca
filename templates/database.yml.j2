@@ -1,0 +1,8 @@
+{{ datoca_deploy_env }}:
+  adapter: postgresql
+  database: {{ datoca_database_name }}
+  pool: 25
+  timeout: 5000
+  username: {{ datoca_database_user }}
+  password: {{ datoca_database_password }}
+  host: localhost

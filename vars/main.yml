@@ -1,14 +1,33 @@
 ---
 datoca_user: datoca
 datoca_group: datoca
-datoca_ruby_version: 2.4.0
+datoca_ruby_version: 2.3.1
 datoca_path: "/home/{{ datoca_user }}/web"
-datoca_deploy_env: development
+datoca_deploy_env: staging
 # DATABASE
 datoca_database_name: datoca
 datoca_database_user: datoca
 datoca_database_password: "pick your poison"
-
-datoca_sec_key_base: "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+# RAILS
+datoca_rails_base_url: https://example.net
+datoca_rails_action_mailer_host: example.net
+datoca_rails_sec_key_base: "00000000000000000000000000000000"
+datoca_rails_devise_sec_key: "00000000000000000000000000000000"
+datoca_rails_devise_mailer: do-not-reply@example.net
+# MAIL
+datoca_smtp_address: smtp.example.net
+datoca_smtp_port: 587
+datoca_smtp_domain: mx.exemple.net
+datoca_smtp_user: user@mx.exemple.net
+datoca_smtp_pass: 'super secret password'
+datoca_smtp_auth: plain
 # VENDORS
-datoca_vendors_skylight_token: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+datoca_vendors_skylight_token: "00000000000000000000000000000000"
+datoca_vendors_facebook_id: "00000000000000000000000000000000"
+datoca_vendors_facebook_secret: "00000000000000000000000000000000"
+datoca_vendors_facebook_callback_url: "https://example.net/auth/auth/facebook/callback"
+datoca_vendors_linkedin_id: "00000000000000000000000000000000"
+datoca_vendors_linkedin_secret: "00000000000000000000000000000000"
+datoca_vendors_google_id: "00000000000000000000000000000000"
+datoca_vendors_google_secret: "00000000000000000000000000000000"
+datoca_vendors_google_analytics: "00000000000000000000000000000000"

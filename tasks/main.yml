@@ -3,3 +3,4 @@
 - include: packages.yml
 - include: rbenv.yml
 - include: database.yml
+- include: datoca.yml

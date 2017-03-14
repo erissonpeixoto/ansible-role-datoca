@@ -1,0 +1,28 @@
+{{ datoca_deploy_env }}:
+  base_url: {{ datoca_rails_base_url }}
+  omniauth:
+    facebook:
+      id: {{ datoca_vendors_facebook_id }}
+      sec: {{ datoca_vendors_facebook_id }}
+      callback_url: {{ datoca_vendors_facebook_id }}
+    linkedin:
+      key: {{ datoca_vendors_linkedin_id }}
+      sec: {{ datoca_vendors_linkedin_secret }}
+    google:
+      id: {{ datoca_vendors_google_id }}
+      sec: {{ datoca_vendors_google_secret }}
+  smtp:
+    address: {{ datoca_smtp_address }}
+    port: {{ datoca_smtp_port }}
+    domain: {{ datoca_smtp_domain }}
+    user: {{ datoca_smtp_user }}
+    pass: {{ datoca_smtp_pass }}
+    auth: {{ datoca_smtp_auth }}
+  devise:
+    secret_key: {{ datoca_rails_devise_sec_key }}
+    mailer:
+      sender: {{ datoca_rails_devise_mailer }}
+  action_mailer:
+    host: {{ datoca_rails_action_mailer_host }}
+  vendors:
+    google_analytics: {{ datoca_vendors_google_analytics }}
