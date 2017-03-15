@@ -1,2 +1,4 @@
 ---
-# handlers file for ansible-role-datoca
+- name: restart nginx
+  become: yes
+  service: name=nginx state=restarted

@@ -1,0 +1,16 @@
+---
+- name: remove nginx default conf
+  file: path=/etc/nginx/{{ item }} state=absent
+  become: yes
+  with_items:
+    - sites-available/default
+    - sites-enabled/default
+
+- name: copy nginx configuration
+  become: yes
+  template: src=nginx.j2 dest=/etc/nginx/sites-available/datoca
+  notify: restart nginx
+
+- name: create symlink between sites-available and sites-enabled
+  become: yes
+  file: src=/etc/nginx/sites-available/datoca dest=/etc/nginx/sites-enabled/datoca state=link
