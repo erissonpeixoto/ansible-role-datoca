@@ -26,4 +26,9 @@
     host: {{ datoca_rails_action_mailer_host }}
   vendors:
     google_analytics: {{ datoca_vendors_google_analytics }}
-  {{ datoca_fog_credentials }}
+  fog:
+    storage:
+      provider: {{ datoca_fog_storage_provider }}
+      directory: {{ datoca_fog_storage_directory }}
+      {{ datoca_fog_storage_key_key }}: {{ datoca_fog_storage_key_val }}
+      {{ datoca_fog_storage_sec_key }}: {{ datoca_fog_storage_sec_val }}
