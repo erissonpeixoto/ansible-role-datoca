@@ -41,3 +41,5 @@
     - redis-server
     # NGINX
     - nginx
+    # DATOCA
+    - imagemagick
